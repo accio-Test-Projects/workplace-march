@@ -1,10 +1,12 @@
-import React from "react";
+import React,{useContext} from "react";
 import btnIcon from "../../assects/btn.png";
 import "./auth.css";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../firebaseconfig";
+import {UserContext} from '../../context/userContext'
 function Auth({ usertype }) {
   const provider = new GoogleAuthProvider();
+  const [userData,dispatch]=useContext(UserContext);
   const signIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -12,6 +14,12 @@ function Auth({ usertype }) {
         const {user} = result ;
         const { email, displayName, photoURL } = user;
         console.log(email, displayName, photoURL, "user");
+        dispatch({
+          type:'LOGIN',
+          payload:{
+            email, displayName, photoURL 
+          }
+        })
       })
       .catch((error) => {
         // Handle Errors here.
