@@ -35,3 +35,35 @@ export const primaryRole=[
   'Mobile',
   'Other',
 ]
+export const industryType=[
+  'Agriculture',
+  'Automotive',
+  'Banking',
+  'Biotechnology',
+  'Chemicals',
+  'Computer Hardware',
+  'Computer Software',
+  'Construction',
+  'Consulting',
+  'Education',
+  'Electronics',
+  'Energy',
+  'Engineering',
+  'Entertainment',
+  'Environmental',
+
+  'Finance',
+  'Food & Beverages',
+  'Government',
+  'Healthcare',
+  'Hospitality',
+]
+
+export const companySize=[
+  '1-10',
+  '11-50',
+  '51-100',
+  '100-500',
+  '500-1000',
+  '100+',
+]
