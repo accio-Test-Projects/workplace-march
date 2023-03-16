@@ -53,6 +53,11 @@ const submit = (e) => {
     spacing={2}
     className="onboarding-container"
     >
+       <Grid item xs={12}>
+        <h1>
+         ONBOARDING CANDIDATE
+        </h1>
+       </Grid>
       <Grid item xs={12} md={6} >
         <label
         className="onboarding-label"
