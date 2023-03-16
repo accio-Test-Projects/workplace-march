@@ -1,24 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grid, TextField } from "@mui/material";
 import './onboarding.css'
 import SearchDropDown from '../../common/SearchDropDown'
 import Dropdown from '../../common/dropdown'
 import FileUpload from '../../common/FileUpload'
 import {skills,experience,primaryRole} from '../../../content'
+import {UserContext} from '../../../context/userContext'
 function CandidateOnboarding() {
-  //name
-  //email
-  //phone
-  // location
-  // skills
-  //primary role
-  //linkedIn
-  //experience
-  //bio
-  //resume
+ const [userData,dispatch]=useContext(UserContext)
 const [userInformation, setUserInformation] = React.useState({
-    name: "",
-    email: "",
+    name: userData.user.displayName,
+    email: userData.user.email,
     phone: "",
     location: "",
     skills: [],//
@@ -82,6 +74,7 @@ const submit = (e) => {
         </label>
         <TextField
         required
+        disabled
           id="outlined-basic"
           variant="outlined"
           fullWidth
