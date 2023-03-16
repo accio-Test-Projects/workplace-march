@@ -1,5 +1,4 @@
 import React from "react";
-
 function Cards({ title, subtitle, icon }) {
   return (
     <div className="card-container">
