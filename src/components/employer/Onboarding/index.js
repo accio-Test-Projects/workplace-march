@@ -1,25 +1,18 @@
 import React, { useContext } from "react";
-import { Grid, TextField } from "@mui/material";
+import { Button, CircularProgress, Grid, TextField } from "@mui/material";
 import "./onboarding.css";
 import Dropdown from "../../common/dropdown";
 import FileUpload from "../../common/FileUpload";
 import {  industryType, companySize } from "../../../content";
 import { UserContext } from "../../../context/userContext";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../../firebaseconfig";
+import toastMessage from "../../../util/toastMessage";
+import { useNavigate } from "react-router-dom";
 function CandidateOnboarding() {
   const [userData, dispatch] = useContext(UserContext);
-
-  // company name
-  // pnone
-  //industry_type
-  //  company_size
-  //employer_email
-  //name
-  //role
-  //location
-  //website
-  //company_tag
-  //company_bio
-  //company_logo
+const [loading, setLoading] = React.useState(false);
+const navigate=useNavigate();
   const [userInformation, setUserInformation] = React.useState({
     name: userData.user.displayName,
     employer_email: userData.user.email,
@@ -46,9 +39,24 @@ function CandidateOnboarding() {
       }
     }
   };
-  const submit = (e) => {
+  const submit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     console.log(userInformation);
+    try {
+      // Add a new document in collection "cities"
+      await setDoc(doc(db, "users", userData.user.email), {
+        ...userInformation,
+        userType: "employer",
+      });
+      toastMessage("Onboarding Successful", "success")
+      navigate('/employer/profile')
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+      toastMessage("Onboarding Failed", "danger")
+      setLoading(false);
+    }
   };
   return (
     <form onSubmit={(e) => submit(e)}>
@@ -240,7 +248,17 @@ function CandidateOnboarding() {
           />
         </Grid>
         <Grid item xs={12} className="submit-btn">
-          <button type="submit">Complete Onboarding</button>
+          {loading ? (
+            <button
+            type="button"
+            >
+            <CircularProgress />
+            </button>
+          ) : (
+            <Button disabled={userInformation.resume === ""} type="submit">
+              Complete Onboarding
+            </Button>
+          )}
         </Grid>
       </Grid>
     </form>
