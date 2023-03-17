@@ -12,24 +12,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Logo from '../../assects/logo.png'
+import Logo from '../../../assects/logo.png'
 import { useNavigate } from 'react-router-dom';
-const pages = [
-  {
-    title: 'Home',
-    path: '/',
-  },
-  {
-    title:'Find Jobs',
-    path:'/candidate/auth'
-  },
-  {
-    title:'Find Candidates',
-    path:'/employer/auth'
-  }
-];
 
-function TopBar() {
+
+function TopBar({pages}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate=useNavigate();

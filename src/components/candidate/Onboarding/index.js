@@ -58,6 +58,7 @@ function CandidateOnboarding() {
       setLoading(false);
     }
   };
+  
   return (
     <form onSubmit={(e) => submit(e)}>
       <Grid container spacing={2} className="onboarding-container">
