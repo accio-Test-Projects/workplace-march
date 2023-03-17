@@ -8,7 +8,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import {storage} from "../../../firebaseconfig";
-function FileUpload({ filetype, onUpload, value }) {
+function FileUpload({ filetype, onUpload, value,disabled }) {
   const upload = (e) => {
     const file = e.target.files[0];
     console.log(file);
@@ -44,6 +44,7 @@ function FileUpload({ filetype, onUpload, value }) {
         <label className="onboarding-label">resume</label>
 
         <TextField
+        disabled={disabled}
           id="outlined-basic"
           variant="outlined"
           fullWidth

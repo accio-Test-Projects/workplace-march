@@ -44,7 +44,7 @@ function TopBar({pages}) {
     style={{
       backgroundColor: '#fff',
     }}
-    position="static">
+    position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
         

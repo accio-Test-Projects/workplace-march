@@ -37,7 +37,12 @@ function Navs() {
     return (
       <div>
         <TopBar pages={pages} />
-        <Outlet />
+        <div
+        style={{
+          marginTop: '100px',
+        }}
+        >  <Outlet /></div>
+      
       </div>
     );
   };
@@ -63,7 +68,14 @@ function Navs() {
     return (
       <div>
         <TopBar pages={pages} />
-        <Outlet />
+        <div
+        style={{
+          marginTop: '100px',
+        }}
+        >
+             <Outlet />
+        </div>
+     
       </div>
     );
   };

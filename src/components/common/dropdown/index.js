@@ -8,12 +8,14 @@ function Dropdown({
   options,
   onChange,
   value,
-  required
+  required,
+  disabled
 }) {
   return (
     <FormControl fullWidth>
   
     <Select
+    disabled={disabled}
     required={required}
       labelId="demo-simple-select-label"
       id="demo-simple-select"
