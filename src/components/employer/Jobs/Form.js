@@ -67,7 +67,8 @@ function Form({ setShowFormInMobile, selectedJob }) {
         jobId,
         createdAt: new Date().toISOString(),
         employerId: userData.user.email,
-        employerName: "employer name",
+        employerName: userData.userInfo.company_name,
+        company_logo: userData.userInfo.company_logo,
       });
       if(selectedJob){
         toastMessage("Job updated successfully", "success");
